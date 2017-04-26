@@ -39,9 +39,9 @@
     <div class="container">
         <h1>特約營區</h1>
         <ol>
-            <li>依聚樂部的檔案製作，請以聚樂部的檔案為主，網址：
-                <a href="https://www.facebook.com/events/1083710451773480/?active_tab=discussion">
-                    https://www.facebook.com/events/1083710451773480/?active_tab=discussion
+            <li>依威力屋獅友聚樂部的檔案製作，請以威力屋獅友聚樂部的檔案為主，網址：
+                <a href="https://www.facebook.com/events/1325636490795708/">
+                    https://www.facebook.com/events/1325636490795708/
                 </a>。
             </li>
             <li>位置優先以Google搜尋到的位置，搜尋不到的位置儘量靠近營區路口。(※出門前請記得再次確認座標)</li>
@@ -52,10 +52,15 @@
 
 <div class="container">
     <div>
-        <input type="text" placeholder="搜尋：縣市  or 鄉鎮 or 營區名稱 or 獅友" class="form-control" id="blgcc-search">
+        <div class="input-group">
+            <span class="input-group-addon" id="owl-life-search-button"><i class="fa fa-search" aria-hidden="true"></i></span>
+            <input type="text" placeholder="搜尋：縣市  or 鄉鎮 or 營區名稱 or 獅友" class="form-control" id="owl-life-search-text">
+            <span class="input-group-addon" id="owl-life-search-submit">搜尋</span>
+            <input type="hidden" class="form-control" id="owl-life-search-store">
+        </div>
         <div id="pagination" class="pagination btn-group"></div>
     </div>
-    <div id="blfgcc"></div>
+    <div id="owllccc"></div>
 </div>
 
 <hr>
@@ -64,11 +69,11 @@
     <p><i class="fa fa-pencil" aria-hidden="true"></i> - 2017/04/25</p>
 </footer>
 
-
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="jquery.pagination.js"></script>
+<script type="text/javascript" src="jquery.bootstrap.waitingfor.js"></script>
 <script type="text/javascript" src="owl-life-camp.run.js"></script>
 </html>
 
