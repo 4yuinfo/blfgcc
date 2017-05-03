@@ -10,7 +10,13 @@
     <title>威力屋獅友聚樂部 - 特約營區</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="owl-life-camp.card.css" rel="stylesheet">
+    <link href="bootstrap.4uy.card.css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.6/vue.min.js"></script>
+    <script type="text/javascript" src="jquery.pagination.js"></script>
+    <script type="text/javascript" src="jquery.bootstrap.waitingfor.js"></script>
+    <script type="text/javascript" src="cc.run.js"></script>
 </head>
 
 <body>
@@ -29,38 +35,67 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <form class="navbar-form navbar-right" role="form">
-                <a href="https://www.facebook.com/groups/1028615490484925/" class="btn btn-primary"><i aria-hidden="true" class="fa fa-facebook"></i></a>
+                <a href="https://www.facebook.com/groups/1028615490484925/" class="btn btn-primary">
+                    <i aria-hidden="true" class="fa fa-facebook"></i> 威力屋獅友聚樂部
+                </a>
+                <a href="https://www.facebook.com/groups/1028615490484925/" class="btn btn-primary">
+                    <i aria-hidden="true" class="fa fa-facebook"></i> 威力屋獅友聚樂部
+                </a>
             </form>
         </div>
     </div>
 </nav>
-
-<div class="jumbotron">
-    <div class="container">
-        <h1>特約營區</h1>
-        <ol>
-            <li>依威力屋獅友聚樂部的檔案製作，請以威力屋獅友聚樂部的檔案為主，網址：
-                <a href="https://www.facebook.com/events/1325636490795708/">
-                    https://www.facebook.com/events/1325636490795708/
-                </a>。
-            </li>
-            <li>位置優先以Google搜尋到的位置，搜尋不到的位置儘量靠近營區路口。(※出門前請記得再次確認座標)</li>
-            <li>有錯誤的地方，請協助於聚樂部該篇特約營區貼文下留言，收到訊息後儘速更新。</li>
-        </ol>
-    </div>
-</div>
-
-<div class="container">
-    <div>
-        <div class="input-group">
-            <span class="input-group-addon" id="owl-life-search-button"><i class="fa fa-search" aria-hidden="true"></i></span>
-            <input type="text" placeholder="搜尋：縣市  or 鄉鎮 or 營區名稱 or 獅友" class="form-control" id="owl-life-search-text">
-            <span class="input-group-addon" id="owl-life-search-submit">搜尋</span>
-            <input type="hidden" class="form-control" id="owl-life-search-store">
+<div class="row">
+    <div class="container" id="campcc">
+        <br/>
+        <br/>
+        <br/>
+        <div>
+            <div class="col-xs-12">
+                <input type="text" placeholder="搜尋：縣市  or 鄉鎮 or 營區名稱 or 獅友" class="form-control" id="cc-search-text">
+            </div>
+            <div id="pagination" class="pagination btn-group"></div>
         </div>
-        <div id="pagination" class="pagination btn-group"></div>
+        <div>
+            <div class="campblock col-xs-12 col-sm-12 col-md-6 col-lg-4" style="height: 400px; display: block;"
+                 v-for="camp in shows">
+                <div class="card hovercard">
+                    <div class="cardheader">
+                        <img v-bind:src="camp.camp_img_imgb | imgChang" height="100%" width="100%">
+                    </div>
+                    <div class="avatar">
+                        <img v-bind:src="camp.camp_img_imga | imgChang">
+                    </div>
+                    <div class="card-block">
+                        <h4 class="card-title">{{camp.camp_name}}</h4>
+                    </div>
+                    <div class="card-block col-xs-offset-2">
+                        <div class="card-text text-left">
+                            <strong>特約編號</strong>&nbsp;&nbsp;<span>{{camp.blfc_id}}</span><br>
+                            <strong>熱心獅友</strong>&nbsp;&nbsp;<span>{{camp.blfc_friends}}</span><br>
+                            <strong>營區區域</strong>&nbsp;&nbsp;<span>{{camp.camp_place}}</span><br>
+                            <strong>營區座標</strong>&nbsp;&nbsp;<span>{{camp.camp_point}}</span><br>
+                            <strong>營區電話</strong>&nbsp;&nbsp;<span><a v-bind:href="camp.camp_tel | telLink">{{camp.camp_tel}}</a></span><br>
+                            <strong>營區高度</strong>&nbsp;&nbsp;<span>{{camp.camp_height}}</span><br>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div class="bottom">
+                            <a v-bind:href="camp.camp_url" class="btn btn-primary">
+                                <i aria-hidden="true" class="fa fa-home"></i>
+                            </a>
+                            <a v-bind:href="camp.blfc_url" class="btn btn-danger">
+                                <i aria-hidden="true" class="fa fa-commenting"></i>
+                            </a>
+                            <a v-bind:href="camp.camp_point | pointChang" class="btn btn-primary">
+                                <i aria-hidden="true" class="fa fa-map-marker"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="owllccc"></div>
 </div>
 
 <hr>
@@ -70,10 +105,5 @@
 </footer>
 
 </body>
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="jquery.pagination.js"></script>
-<script type="text/javascript" src="jquery.bootstrap.waitingfor.js"></script>
-<script type="text/javascript" src="owl-life-camp.run.js"></script>
 </html>
 
